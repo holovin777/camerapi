@@ -73,7 +73,9 @@ def read_photos():
         photos_api.append(
             {
                 "id": photo["id"],
+                "name": photo["name"],
                 "url": url + photo["url_api"],
+                "url_to_thumbnail": photo["url_to_thumbnail"],
             }
         )
     return photos_api
