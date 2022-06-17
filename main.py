@@ -38,7 +38,7 @@ videos = []
 def read_hello():
     return {"hello": "world"}
 
-@app.get("/scan-photos")
+@app.get("/photos/scan")
 def scan_photos():
     i = 0
     for article in articles:
@@ -89,7 +89,7 @@ async def read_photo(photo_id):
         "url_to_thumbnail": photos[int(photo_id)]["url_to_thumbnail"],
     }
 
-@app.get("/scan-videos")
+@app.get("/videos/scan")
 def scan_videos():
     i = 0
     for article in articles:
