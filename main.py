@@ -55,7 +55,7 @@ def scan_photos():
             )
             i = i + 1
 
-    size = 380, 640
+    size = 240, 240
     if not os.path.isdir(path_to_camera + "thumbnails"):
         os.mkdir(path_to_camera + "thumbnails")
     for photo in photos:
