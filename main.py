@@ -58,6 +58,9 @@ def scan_photos():
     size = 240, 240
     if not os.path.isdir(path_to_camera + "thumbnails"):
         os.mkdir(path_to_camera + "thumbnails")
+    else:
+        shutil.rmtree(path_to_camera + "thumbnails", ignore_errors=True, onerror=None)
+        os.mkdir(path_to_camera + "thumbnails")
     for photo in photos:
         with Image.open(photo["path_to_photo"]) as img:
             img.thumbnail(size)
