@@ -46,10 +46,10 @@ def scan_photos():
             photos.append(
                 {
                     "id": i,
-                    "url_api": "photos/" + str(i),
                     "name": article,
-                    "url_to_photo": url + "static/" + article,
                     "path_to_photo": path_to_camera + article,
+                    "detail": "photos/" + str(i),
+                    "url_to_photo": url + "static/" + article,
                     "url_to_thumbnail": url + "static/" + "thumbnails/" + article + ".thumbnail",
                 }
             )
@@ -70,17 +70,17 @@ def scan_photos():
 
 @app.get("/photos")
 def read_photos():
-    photos_api = []
+    photos_short_details = []
     for photo in photos:
-        photos_api.append(
+        photos_short_details.append(
             {
                 "id": photo["id"],
                 "name": photo["name"],
-                "url": url + photo["url_api"],
+                "url_detail": url + photo["detail"],
                 "url_to_thumbnail": photo["url_to_thumbnail"],
             }
         )
-    return photos_api
+    return photos_short_details
 
 @app.get("/photos/{photo_id}")
 async def read_photo(photo_id):
@@ -100,7 +100,7 @@ def scan_videos():
             videos.append(
                 {
                     "id": i,
-                    "url_api": "videos/" + str(i),
+                    "detail": "videos/" + str(i),
                     "name": article,
                     "url_to_video": url + "static/" + article,
                     "path_to_video": path_to_camera + article,
@@ -112,16 +112,16 @@ def scan_videos():
 
 @app.get("/videos")
 def read_videos():
-    videos_api = []
+    videos_short_details = []
     for video in videos:
-        videos_api.append(
+        videos_short_details.append(
             {
                 "id": video["id"],
                 "name": video["name"],
-                "url": url + video["url_api"],
+                "url_detail": url + video["detail"],
             }
         )
-    return videos_api
+    return videos_short_details
 
 @app.get("/videos/{video_id}")
 async def read_video(video_id):
