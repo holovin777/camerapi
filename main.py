@@ -31,6 +31,7 @@ app.add_middleware(
 )
 
 articles = os.listdir(path_to_camera)
+articles.sort(reverse=True)
 photos = []
 videos = []
 
